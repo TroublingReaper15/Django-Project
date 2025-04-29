@@ -1,0 +1,46 @@
+{%extends "base.html"%}
+{% block content%}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <title>Registration</title>
+</head>
+<body>
+    {{msg}}
+<div class='form1'>
+<form action="{% url 'data' %}" method="post" >
+    {% csrf_token %}
+    <label for="username">Name:</label>
+    <input type="text" class='username' name="username" placeholder="Enter your name">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" class='email' name="email" placeholder="Enter your email">
+    <br>
+    <label for="phone">Contact:</label>
+    <input type="tel" name="phone" class='Contact' placeholder="Enter your phone number">
+    <br>
+    <br>
+    <label for="dob">DOB:</label>
+    <input type="date" name="dob">
+    <br>
+    <label for="gender">Gender:</label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+    <br>
+    <label for="cpassword">Confirm Password:</label>
+    <input type="password" name="cpassword">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>
+{% endblock content%}
+

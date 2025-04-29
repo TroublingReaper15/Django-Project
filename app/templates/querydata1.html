@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/querydata.css'%}">
+    <title>Query Data</title>
+</head>
+<body>
+    {% comment %} <form action="{% url 'search'  %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="searching" class="searching" placeholder="Enter value for Search">
+        <button>Search</button>
+        <a href="{% url 'data' %}"><button>Reset</button></a>
+    </form> {% endcomment %}
+        {% if admindata %}
+        <table border="1">
+            <tr>
+                <td>S.No</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Query</td>
+            </tr>
+            {% for i in alldata %}
+                <tr>
+                    <td align='center'>{{forloop.counter}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.query}}</td>
+                </tr>
+            {% endfor %}
+                </table>
+        {% endif %}
+</body>
+</html>
+{% endblock content %}
+
+

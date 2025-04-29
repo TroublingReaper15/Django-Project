@@ -1,0 +1,30 @@
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+<body class="body1">
+    <section class="top"></section>
+    <form action="{% url 'dashboard' %}" method="post">
+    {% csrf_token %}
+    <div class="page1" id="page1">
+        <div id="login" class="login"><b>LOGIN</b><br><br></div>
+    <input type="text" placeholder="Email Id" class="email" id="email" name="loginemail">
+    <br><br>
+    <input type="password" placeholder="Password" class="password" id="password" name="loginpassword">
+    <br><div>{{msg}}</div>
+    <br><br>
+    <input type="submit" class="submit"  value="Submit">
+    <br><br>
+<a href="{% url "registration" %}">Create a Account</a>
+    </div>
+</section>
+</form>
+</body>
+</html>
+{% endblock content%}

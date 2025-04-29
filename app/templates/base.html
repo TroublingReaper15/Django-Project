@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    {% if admindata %}
+        <section class="page">
+            <div class="nav">
+            <ul class="nav1">
+                <li><img src="https://skins.minimog.co/cdn/shop/files/ceramic_logo.png?v=1659925094&width=250"></li>
+            </ul>
+            <ul class="nav2">
+                <li><a href="{% url "admin_email" %}">EMAIL</a></li>
+                <li><a href="{% url "admin_query" %}">QUERYDATA</a></li>
+                <li><a href="{% url "home" %}">LOGOUT</a></li>
+            </ul>
+            <ul class="nav3">
+                <li><a href="{%url 'admin_data' %}"><img src="{% static "image/person_FILL0_wght400_GRAD0_opsz24.png" %}"></a></li>
+                <div class="id"><li>{{admindata.name}}</li></div>
+            </ul>
+        </div>
+        </section>
+    {% else %}
+    <section class="page">
+        <div class="nav">
+        <ul class="nav1">
+            <li><img src="https://skins.minimog.co/cdn/shop/files/ceramic_logo.png?v=1659925094&width=250"></li>
+        </ul>
+        <ul class="nav2">
+            {% if data %}
+            <li><a href="{% url "home1" pk=data.z %}">HOME</a></li>
+            <li><a href="{% url 'query' pk=data.z %}">QUERY</a></li>
+            <li><a href="{% url 'data' pk=data.z %}">QUERYDATA</a></li>
+            {% else %}
+            <li><a href="{% url "home" %}">HOME</a></li>
+            <li><a href="{% url "registration" %}">REGISTRATION</a></li>    
+            {% endif %}
+            {%if data %}
+            <li><a href="{% url "home" %}">LOGOUT</a></li>
+            {% else %}
+            <li><a class="nav-link" href="{% url "login" %}">LOGIN</a></li>
+            {% endif%}
+        </ul>
+        <ul class="nav3">
+            {% if data %}
+            <li><a href="{% url "dash" pk=data.z %}"><img src="{% static "image/person_FILL0_wght400_GRAD0_opsz24.png" %}"></a></li>
+            <div class="id"><li>{{data.p}}</li></div>
+            {% else %}
+            <li><a href="{% url "home" %}"><img src="{% static "image/person_FILL0_wght400_GRAD0_opsz24.png" %}"></a></li>
+            {%endif%}
+        </ul>
+    </div>
+    {% endif %}
+</header>
+    {% block content %}{% endblock content %}
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+    <title>Dashboard</title>
+</head>
+<body>
+{%if admindata%}
+<div class="welcome">Welcome {{admindata.name}} to the Dashboard</div>
+    <br><br><br><br>
+    <div class="name">Name : {{admindata.name}}</div><br>
+    <div class="email">Email : {{admindata.email}}</div><br>
+    <div class="dob">Date Of Birth : {{admindata.dob}} </div><br>
+    <div class="gender">Gender : {{admindata.gender}} </div><br>
+    <div class="contact">Contact : {{admindata.contact}} </div><br>
+    <div class="password">Password : {{admindata.password}} </div><br>
+{% else %}
+    <div class="welcome">Welcome {{data.p}} to the Dashboard</div>
+    <br><br><br><br>
+    <div class="name">Name : {{data.p}}</div><br>
+    <div class="email">Email : {{data.q}}</div><br>
+    <div class="dob">Date Of Birth : {{data.b}} </div><br>
+    <div class="gender">Gender : {{data.c}} </div><br>
+    <div class="contact">Contact : {{data.a}} </div><br>
+    <div class="password">Password : {{data.r}} </div><br>
+{% endif %}
+</body>
+</html>
+{% endblock content %}

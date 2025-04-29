@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Query</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br>
+    {% if querydata %}
+            <form action="{% url 'querydata' pk=data.z %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value={{data.p}} readonly>
+            <br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value={{data.q}} readonly>
+            <br>
+            <label for="query">Query</label>
+            <input type="text" id="query" name="query" required>
+            <br>
+            <input type="submit" value="Query">
+            </form>
+        {% elif data3 %}
+            <form action="{% url 'update' pk=data3.id %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value={{data3.n}} readonly>
+            <br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value={{data3.e}} readonly>
+            <br>
+            <label for="query">Query</label>
+            <input type="text" id="query" name="query" value={{data3.query}} required>
+            <br>
+            <input type="submit" value="Query">
+            </form>
+        {% elif data  %}
+            <form action="{% url 'querydata' pk=data.z %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value={{data.p}} readonly>
+            <br>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value={{data.q}} readonly>
+            <br>
+            <label for="query">Query</label>
+            <input type="text" id="query" name="query" required>
+            <br>
+            <input type="submit" value="Query">
+            </form>
+        {% endif %}
+</body>
+</html>
+{%endblock content%}
+
